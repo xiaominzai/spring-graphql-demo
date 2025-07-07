@@ -1,0 +1,38 @@
+type Author {
+    # 作家写的书
+    books: [Book]
+    # 邮件
+    email: String
+    # 姓
+    firstName: String
+    # id
+    id: ID
+    # 名
+    lastName: String
+    # 姓名
+    name: String
+}
+
+type Book {
+    # 作者
+    author: Author
+    # id
+    id: ID
+    # 国际标准书号
+    isbn: String
+    # 书名
+    name: String
+    # 页数
+    pageCount: Int
+    # 标题
+    title: String
+}
+
+type Query {
+    # 通过书本id查询书本
+    bookById(id: ID!): Book
+    # 分页查询
+    books(page: Int!, size: Int!, titleFilter: String): [Book]
+    # 通过书名模糊查询
+    booksByTitle(title: String!): [Book]
+}
